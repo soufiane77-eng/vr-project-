@@ -625,7 +625,11 @@ if (widgetPlayBtn) {
 
 // Custom overlay images cycle (bleu, vert, violet)
 const overlayImages = [];
-const overlayPaths = ['/bleu.png', '/vert.png', '/violet.png'];
+const overlayPaths = [
+  'https://cdn.jsdelivr.net/gh/soufiane77-eng/vr-project-@master/public/bleu.png',
+  'https://cdn.jsdelivr.net/gh/soufiane77-eng/vr-project-@master/public/vert.png',
+  'https://cdn.jsdelivr.net/gh/soufiane77-eng/vr-project-@master/public/violet.png'
+];
 let overlayIndex = 0;
 overlayPaths.forEach(src => {
   const img = new Image();
@@ -705,7 +709,7 @@ function init3DLogo() {
 
   // Load GLB
   const loader = new GLTFLoader();
-  loader.load('/models/logo.glb', (gltf) => {
+    loader.load('https://cdn.jsdelivr.net/gh/soufiane77-eng/vr-project-@master/public/models/logo.glb', (gltf) => {
     const model = gltf.scene;
 
     // Auto-center and scale to fit
