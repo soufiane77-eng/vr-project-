@@ -54,7 +54,7 @@ let sequence2Loaded = false;
 
 // Generate frame paths for Section 1
 const getFramePath = (index) => {
-  return `/frames/ezgif-frame-${index.toString().padStart(3, '0')}.jpg`;
+  return `/frames/ezgif-frame-${index.toString().padStart(3, '0')}.png`;
 };
 
 // Generate frame paths for Section 3
