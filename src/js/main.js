@@ -68,7 +68,7 @@ function drawImageCover(img) {
 
   // Mobile: zoom out slightly (scale < 1 = image smaller = more visible)
   const isMobile = window.innerWidth <= 767;
-  const zoomOut = isMobile ? 0.82 : 1;
+  const zoomOut = isMobile ? 0.6 : 1;
 
   const canvasWidth = canvas.width * zoomOut;
   const canvasHeight = canvas.height * zoomOut;
@@ -103,8 +103,14 @@ function drawImageCover(img) {
 function drawImageCover2(img) {
   if (!img || !img.complete) return;
 
-  const canvasWidth = canvas2.width;
-  const canvasHeight = canvas2.height;
+  // Mobile: zoom out slightly (scale < 1 = image smaller = more visible)
+  const isMobile = window.innerWidth <= 767;
+  const zoomOut = isMobile ? 0.6 : 1;
+
+  const canvasWidth = canvas2.width * zoomOut;
+  const canvasHeight = canvas2.height * zoomOut;
+  const offsetX = (canvas2.width - canvasWidth) / 2;
+  const offsetY = (canvas2.height - canvasHeight) / 2;
   
   const imgWidth = img.width;
   const imgHeight = img.height;
@@ -117,16 +123,16 @@ function drawImageCover2(img) {
   if (canvasRatio > imgRatio) {
     drawWidth = canvasWidth;
     drawHeight = canvasWidth / imgRatio;
-    x = 0;
-    y = (canvasHeight - drawHeight) / 2;
+    x = offsetX;
+    y = offsetY + (canvasHeight - drawHeight) / 2;
   } else {
     drawWidth = canvasHeight * imgRatio;
     drawHeight = canvasHeight;
-    x = (canvasWidth - drawWidth) / 2;
-    y = 0;
+    x = offsetX + (canvasWidth - drawWidth) / 2;
+    y = offsetY;
   }
   
-  ctx2.clearRect(0, 0, canvasWidth, canvasHeight);
+  ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
   ctx2.drawImage(img, x, y, drawWidth, drawHeight);
 }
 
