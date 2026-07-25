@@ -45,13 +45,17 @@
     padding-top: 0.5rem;
   }
 
-  /* On mobile: Widget card FIRST, Creative Agency BELOW */
+  /* On mobile: Widget card FIRST, Creative Agency SECOND, Partners LAST */
   .hero-right {
     order: -1;
   }
 
   .hero-left {
     order: 1;
+  }
+
+  .hero-partners {
+    order: 2;
   }
 
   .hero-section {
