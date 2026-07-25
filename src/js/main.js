@@ -68,7 +68,7 @@ function drawImageCover(img) {
 
   // Mobile: zoom out slightly (scale < 1 = image smaller = more visible)
   const isMobile = window.innerWidth <= 767;
-  const zoomOut = isMobile ? 0.6 : 1;
+  const zoomOut = isMobile ? 0.80 : 1;
 
   const canvasWidth = canvas.width * zoomOut;
   const canvasHeight = canvas.height * zoomOut;
@@ -105,7 +105,7 @@ function drawImageCover2(img) {
 
   // Mobile: zoom out slightly (scale < 1 = image smaller = more visible)
   const isMobile = window.innerWidth <= 767;
-  const zoomOut = isMobile ? 0.6 : 1;
+  const zoomOut = isMobile ? 0.80 : 1;
 
   const canvasWidth = canvas2.width * zoomOut;
   const canvasHeight = canvas2.height * zoomOut;
