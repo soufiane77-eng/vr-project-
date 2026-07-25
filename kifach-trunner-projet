@@ -1,0 +1,64 @@
+# Kifach Trunner le Projet 🚀
+
+## Prérequis
+- Node.js installé (v18+) → https://nodejs.org
+- Terminal / PowerShell
+
+## Steps
+
+### 1. Ouvrir le terminal et aller dans le dossier du projet
+```powershell
+cd C:\Users\HP\Downloads\proj-vr
+```
+
+### 2. Installer les dépendances (une seule fois)
+```powershell
+npm install
+```
+
+### 3. Lancer le serveur de développement
+```powershell
+npx vite --port 3000
+```
+
+### 4. Ouvrir le navigateur
+Va sur → **http://localhost:3000**
+
+## Arrêter le serveur
+Dans le terminal, appuyer sur **Ctrl + C**
+
+## Build pour la production
+```powershell
+npx vite build
+```
+Le dossier `dist/` sera créé avec les fichiers optimisés.
+
+## Structure du projet
+```
+proj-vr/
+├── index.html          → Page principale
+├── public/
+│   ├── frames/         → Images sequence Section 1 (210 frames)
+│   ├── frames2/        → Images sequence Section 3 (240 frames)
+│   ├── models/         → Logo 3D (logo.glb)
+│   ├── bleu.png        → Image overlay cycle
+│   ├── vert.png        → Image overlay cycle
+│   └── violet.png      → Image overlay cycle
+├── src/
+│   ├── css/main.css    → Tous les styles
+│   └── js/main.js      → Toute la logique JS
+├── vite.config.js      → Config Vite (proxy API, port)
+└── package.json        → Dépendances
+```
+
+## API Chat
+Le bot utilise **Big Pickle** via OpenCode Zen API.
+Le proxy Vite est configuré dans `vite.config.js` pour contourner CORS.
+
+## Technologies
+- **Vite** — Serveur dev + bundler
+- **GSAP + ScrollTrigger** — Animations scroll
+- **Lenis** — Smooth scroll
+- **Canvas** — Image sequences vidéo
+- **Three.js** — Logo 3D GLB
+- **OpenCode Zen (Big Pickle)** — Chat IA
