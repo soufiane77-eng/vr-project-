@@ -66,8 +66,14 @@ const getFramePath2 = (index) => {
 function drawImageCover(img) {
   if (!img || !img.complete) return;
 
-  const canvasWidth = canvas.width;
-  const canvasHeight = canvas.height;
+  // Mobile: zoom out slightly (scale < 1 = image smaller = more visible)
+  const isMobile = window.innerWidth <= 767;
+  const zoomOut = isMobile ? 0.82 : 1;
+
+  const canvasWidth = canvas.width * zoomOut;
+  const canvasHeight = canvas.height * zoomOut;
+  const offsetX = (canvas.width - canvasWidth) / 2;
+  const offsetY = (canvas.height - canvasHeight) / 2;
   
   const imgWidth = img.width;
   const imgHeight = img.height;
@@ -80,16 +86,16 @@ function drawImageCover(img) {
   if (canvasRatio > imgRatio) {
     drawWidth = canvasWidth;
     drawHeight = canvasWidth / imgRatio;
-    x = 0;
-    y = (canvasHeight - drawHeight) / 2;
+    x = offsetX;
+    y = offsetY + (canvasHeight - drawHeight) / 2;
   } else {
     drawWidth = canvasHeight * imgRatio;
     drawHeight = canvasHeight;
-    x = (canvasWidth - drawWidth) / 2;
-    y = 0;
+    x = offsetX + (canvasWidth - drawWidth) / 2;
+    y = offsetY;
   }
   
-  ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(img, x, y, drawWidth, drawHeight);
 }
 
