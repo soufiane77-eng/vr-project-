@@ -59,7 +59,7 @@ const getFramePath = (index) => {
 
 // Generate frame paths for Section 3 (CDN)
 const getFramePath2 = (index) => {
-  return `https://cdn.jsdelivr.net/gh/soufiane77-eng/vr-project-@master/public/frames2/ezgif-frame-${index.toString().padStart(3, '0')}.jpg`;
+  return `https://cdn.jsdelivr.net/gh/soufiane77-eng/vr-project-@master/public/frames2/frame_${index.toString().padStart(6, '0')}.webp`;
 };
 
 // Proportional cover drawing for Canvas 1
