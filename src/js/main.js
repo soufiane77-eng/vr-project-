@@ -763,3 +763,41 @@ init3DLogo();
 
 // Run application
 init();
+
+// ----------------------------------------
+// Mobile: hide widget on scroll down, show on scroll up
+// ----------------------------------------
+(function initMobileWidgetHide() {
+  const widget = document.querySelector('.hero-widget');
+  if (!widget) return;
+
+  let lastScroll = 0;
+  let ticking = false;
+
+  lenis.on('scroll', ({ scroll }) => {
+    if (ticking) return;
+    ticking = true;
+
+    requestAnimationFrame(() => {
+      const isMobile = window.innerWidth <= 767;
+      if (!isMobile) {
+        widget.classList.remove('widget-hidden');
+        lastScroll = scroll;
+        ticking = false;
+        return;
+      }
+
+      const delta = scroll - lastScroll;
+      if (delta > 5) {
+        // scrolling down
+        widget.classList.add('widget-hidden');
+      } else if (delta < -5) {
+        // scrolling up
+        widget.classList.remove('widget-hidden');
+      }
+
+      lastScroll = scroll;
+      ticking = false;
+    });
+  });
+})();
