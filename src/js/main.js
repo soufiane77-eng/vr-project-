@@ -447,12 +447,11 @@ Respond in a professional, friendly, and concise tone. If the user asks about a 
 
   try {
     const response = await fetch(
-      '/api/zen/v1/chat/completions',
+      '/api/zen',
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer sk-4r9ExOU9yGmjVOeFUFPvR5cKz3P9FMT2HGhr8ljXefgHtKalRnik07jjJ9nG13LI'
         },
         body: JSON.stringify({
           model: 'big-pickle',
