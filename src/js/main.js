@@ -52,14 +52,14 @@ let loadedCount2 = 0;
 const sequence2 = { frame: 0 };
 let sequence2Loaded = false;
 
-// Generate frame paths for Section 1
+// Generate frame paths for Section 1 (CDN)
 const getFramePath = (index) => {
-  return `/frames/ezgif-frame-${index.toString().padStart(3, '0')}.png`;
+  return `https://cdn.jsdelivr.net/gh/soufiane77-eng/vr-project-@master/public/frames/ezgif-frame-${index.toString().padStart(3, '0')}.png`;
 };
 
-// Generate frame paths for Section 3
+// Generate frame paths for Section 3 (CDN)
 const getFramePath2 = (index) => {
-  return `/frames2/ezgif-frame-${index.toString().padStart(3, '0')}.jpg`;
+  return `https://cdn.jsdelivr.net/gh/soufiane77-eng/vr-project-@master/public/frames2/ezgif-frame-${index.toString().padStart(3, '0')}.jpg`;
 };
 
 // Proportional cover drawing for Canvas 1
