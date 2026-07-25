@@ -1,0 +1,342 @@
+/* ============================================
+   MOBILE RESPONSIVE — Improvements for phones
+   File: src/css/mobile.css
+   ============================================ */
+
+/* ----------------------------------------
+   1. Hero Left Column
+   Remove big margin-top & scale on mobile
+   ---------------------------------------- */
+@media (max-width: 767px) {
+  .hero-left {
+    margin-top: 2rem;
+    transform: none;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-eyebrow {
+    justify-content: center;
+  }
+
+  .hero-rating {
+    justify-content: center;
+  }
+
+  .hero-actions {
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* Buttons take full width on mobile */
+  .hero-btn-primary,
+  .hero-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ----------------------------------------
+   2. Hero Grid — stack vertically on mobile
+   ---------------------------------------- */
+@media (max-width: 767px) {
+  .hero-grid {
+    gap: 2rem;
+    padding-top: 0.5rem;
+  }
+
+  .hero-section {
+    padding: 1rem 1rem 3rem;
+    min-height: calc(100vh - 80px);
+  }
+}
+
+/* ----------------------------------------
+   3. Navbar — tighter on mobile
+   ---------------------------------------- */
+@media (max-width: 767px) {
+  .hero-nav {
+    padding: 0.5rem 1rem 0.75rem;
+  }
+
+  .hero-nav-brand {
+    font-size: 1.2rem;
+  }
+
+  .hero-nav-logo-3d {
+    width: 32px;
+    height: 32px;
+  }
+
+  .hero-nav-logo-3d canvas {
+    width: 32px;
+    height: 32px;
+  }
+
+  .hero-nav-menu-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.7rem;
+  }
+
+  .hero-nav-menu-btn svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* ----------------------------------------
+   4. Widget — remove transform on mobile
+   ---------------------------------------- */
+@media (max-width: 767px) {
+  .hero-widget {
+    transform: none;
+    max-width: 100%;
+  }
+
+  .hero-widget-header {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .hero-widget-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .hero-widget-buttons {
+    justify-content: center;
+  }
+}
+
+/* ----------------------------------------
+   5. Hero Right — center on mobile
+   ---------------------------------------- */
+@media (max-width: 767px) {
+  .hero-right {
+    align-items: center;
+  }
+
+  .hero-partners {
+    align-items: center;
+  }
+}
+
+/* ----------------------------------------
+   6. Watermark — much smaller on mobile
+   ---------------------------------------- */
+@media (max-width: 767px) {
+  .hero-watermark h2 {
+    font-size: 4rem;
+    letter-spacing: 0.05em;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.06);
+  }
+
+  .hero-watermark {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+  }
+}
+
+/* ----------------------------------------
+   7. Chat Modal — fullscreen on mobile
+   ---------------------------------------- */
+@media (max-width: 767px) {
+  .chat-modal {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .chat-modal-panel {
+    max-width: 100%;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    border-radius: 0;
+    border: none;
+  }
+
+  .chat-messages {
+    max-height: none;
+    flex: 1;
+    padding: 1rem;
+  }
+
+  .chat-form {
+    padding: 0.75rem;
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+  }
+
+  .chat-input {
+    padding: 0.625rem 1rem;
+    font-size: 16px; /* prevent iOS zoom */
+  }
+
+  .chat-send-btn {
+    padding: 0.625rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .chat-header {
+    padding: 1rem;
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+}
+
+/* ----------------------------------------
+   8. Works Drawer — fullscreen + less padding
+   ---------------------------------------- */
+@media (max-width: 767px) {
+  .works-drawer-panel {
+    max-width: 100%;
+    padding: 1.25rem 1.25rem;
+    padding-top: max(1.25rem, env(safe-area-inset-top));
+    padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+  }
+
+  .works-title {
+    font-size: 1.25rem;
+  }
+
+  .works-project {
+    padding: 1rem;
+  }
+
+  .works-project-header h3 {
+    font-size: 1rem;
+  }
+
+  .works-footer {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  .works-start-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.875rem 1.5rem;
+  }
+}
+
+/* ----------------------------------------
+   9. Touch Targets — minimum 44px
+   ---------------------------------------- */
+@media (max-width: 767px) {
+  .hero-widget-btn-sm {
+    width: 44px;
+    height: 44px;
+  }
+
+  .hero-widget-expand {
+    width: 44px;
+    height: 44px;
+  }
+
+  .hero-widget-nav {
+    padding: 4px 12px;
+  }
+
+  .hero-widget-btn-nav {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .chat-close-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .works-close-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .hero-nav-menu-btn {
+    min-height: 44px;
+  }
+}
+
+/* ----------------------------------------
+   10. Headline — smaller on very small screens
+   ---------------------------------------- */
+@media (max-width: 400px) {
+  .hero-headline {
+    font-size: 1.5rem;
+  }
+
+  .hero-eyebrow-text {
+    font-size: 0.75rem;
+  }
+
+  .hero-rating-text {
+    font-size: 0.75rem;
+  }
+}
+
+/* ----------------------------------------
+   11. Scroll container — reduced on mobile
+   (less scroll distance = faster load feel)
+   ---------------------------------------- */
+@media (max-width: 767px) {
+  .scroll-container {
+    height: 400vh;
+  }
+
+  .scroll-wrapper {
+    height: 400vh;
+  }
+}
+
+/* ----------------------------------------
+   12. Partners grid — 1 column on tiny screens
+   ---------------------------------------- */
+@media (max-width: 400px) {
+  .hero-partners-grid {
+    grid-template-columns: 1fr;
+    gap: 0.625rem;
+  }
+}
+
+/* ----------------------------------------
+   13. Loading spinner — larger touch target
+   ---------------------------------------- */
+@media (max-width: 767px) {
+  .loader__text {
+    font-size: 14px;
+  }
+}
+
+/* ----------------------------------------
+   14. Prevent text overflow on small screens
+   ---------------------------------------- */
+@media (max-width: 767px) {
+  .hero-headline {
+    word-break: break-word;
+  }
+
+  .works-project-desc {
+    font-size: 0.8rem;
+  }
+
+  .works-project-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+}
+
+/* ----------------------------------------
+   15. Safe area insets for notch phones
+   (iPhone 12+, modern Androids)
+   ---------------------------------------- */
+@supports (padding: env(safe-area-inset-top)) {
+  @media (max-width: 767px) {
+    .hero-nav {
+      padding-top: max(0.5rem, env(safe-area-inset-top));
+    }
+  }
+}
