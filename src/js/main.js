@@ -626,9 +626,9 @@ if (widgetPlayBtn) {
 // Custom overlay images cycle (bleu, vert, violet)
 const overlayImages = [];
 const overlayPaths = [
-  'https://cdn.jsdelivr.net/gh/soufiane77-eng/vr-project-@master/public/bleu.png',
-  'https://cdn.jsdelivr.net/gh/soufiane77-eng/vr-project-@master/public/vert.png',
-  'https://cdn.jsdelivr.net/gh/soufiane77-eng/vr-project-@master/public/violet.png'
+  'https://cdn.jsdelivr.net/gh/soufiane77-eng/vr-project-@master/public/bleu.webp',
+  'https://cdn.jsdelivr.net/gh/soufiane77-eng/vr-project-@master/public/vert.webp',
+  'https://cdn.jsdelivr.net/gh/soufiane77-eng/vr-project-@master/public/violet.webp'
 ];
 let overlayIndex = 0;
 overlayPaths.forEach(src => {
