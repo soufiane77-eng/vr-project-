@@ -54,7 +54,7 @@ let sequence2Loaded = false;
 
 // Generate frame paths for Section 1 (CDN)
 const getFramePath = (index) => {
-  return `https://cdn.jsdelivr.net/gh/soufiane77-eng/vr-project-@master/public/frames/ezgif-frame-${index.toString().padStart(3, '0')}.png`;
+  return `https://cdn.jsdelivr.net/gh/soufiane77-eng/vr-project-@master/public/frames/frame_${index.toString().padStart(6, '0')}.webp`;
 };
 
 // Generate frame paths for Section 3 (CDN)
