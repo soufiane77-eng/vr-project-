@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const API_KEY = 'sk-4r9ExOU9yGmjVOeFUFPvR5cKz3P9FMT2HGhr8ljXefgHtKalRnik07jjJ9nG13LI';
+  
 
   try {
     const response = await fetch('https://opencode.ai/zen/v1/chat/completions', {
