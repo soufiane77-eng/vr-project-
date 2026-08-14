@@ -1,0 +1,14 @@
+# ============================================================
+# Assets servis par le CDN jsDelivr (depot GitHub soufiane77-eng/vr-project),
+# PAS par le site. Inutile de les deployer sur Vercel :
+#   main.js charge frames/, frames2/, *.webp et models/logo.glb
+#   uniquement via https://cdn.jsdelivr.net/gh/soufiane77-eng/vr-project-@master/public/...
+# Les fichiers RESTENT dans le depot GitHub pour alimenter le CDN.
+# ============================================================
+
+public/frames
+public/frames2
+public/models
+public/*.webp
+
+# Note: robots.txt et sitemap.xml doivent rester deployes (racine du domaine).
