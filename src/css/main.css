@@ -657,33 +657,6 @@ html, body {
   padding: 0;
 }
 
-.hero-widget-click-hint {
-  font-size: 12px;
-  font-weight: 500;
-  color: #fff;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  animation: heroClickHint 4s ease 2.5s 1 forwards;
-}
-
-@keyframes heroClickHint {
-  0% {
-    opacity: 0;
-    transform: translateX(8px);
-  }
-  15% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  75% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
 /* Partners */
 .hero-partners {
   display: flex;
