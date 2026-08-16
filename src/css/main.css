@@ -210,7 +210,11 @@ html, body {
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: -0.02em;
-  color: #fff;
+  background: linear-gradient(90deg, #ffffff 0%, #feb872 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .hero-nav-brand-orange {
