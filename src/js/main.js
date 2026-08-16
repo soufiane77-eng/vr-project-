@@ -164,16 +164,14 @@ function resizeCanvas() {
   const width = window.innerWidth;
   const height = window.innerHeight;
   const dpr = window.devicePixelRatio || 1;
-  // Cap device pixel ratio at 2: prevents huge canvases on high-DPI phones
-  const cappedDpr = Math.min(dpr, 2);
 
   // Canvas 1 Sizing
-  canvas.width = width * cappedDpr;
-  canvas.height = height * cappedDpr;
+  canvas.width = width * dpr;
+  canvas.height = height * dpr;
 
   // Canvas 2 Sizing
-  canvas2.width = width * cappedDpr;
-  canvas2.height = height * cappedDpr;
+  canvas2.width = width * dpr;
+  canvas2.height = height * dpr;
 
   // Render current frames
   render();
@@ -183,77 +181,65 @@ function resizeCanvas() {
 // Listen for window resize events
 window.addEventListener('resize', resizeCanvas);
 
-// Batched image loader: loads paths with limited concurrency so image
-// decodes don't burst on the main thread (better TBT / LCP / FCP / SI).
-// Writes into `target` at the matching index to preserve order.
-function loadImageBatch(paths, target, onProgress, concurrency = 6) {
-  return new Promise((resolve) => {
-    const total = paths.length;
-    let next = 0;
-    let done = 0;
-
-    const worker = () => {
-      if (next >= total) return;
-      const i = next++;
-      const img = new Image();
-      img.decoding = 'async'; // decode off the critical path
-      target[i] = img;
-      const finish = () => {
-        done++;
-        if (onProgress) onProgress(done, total);
-        if (done === total) resolve();
-        else worker();
-      };
-      img.onload = finish;
-      img.onerror = finish;
-      img.src = paths[i];
-    };
-
-    for (let k = 0; k < Math.min(concurrency, total); k++) worker();
-  });
-}
-
-// Preload Section 1 images with limited concurrency.
-// Resolves `firstReady` as soon as the first frame is available so the page
-// can appear immediately instead of waiting for all 210 frames (~4.6 MB).
+// Preload all Section 1 images and synchronously preserve order
 function preloadImages() {
-  const paths = [];
-  for (let i = 0; i < frameCount; i++) paths.push(getFramePath(i + 1));
-
-  let resolveFirst;
-  const firstReady = new Promise((r) => { resolveFirst = r; });
-
-  const allLoaded = loadImageBatch(paths, images, (done, total) => {
-    loaderText.textContent = `Loading ${Math.round((done / total) * 100)}%`;
-    // Wait specifically for frame 0 (not just any first response)
-    if (images[0] && images[0].complete) resolveFirst();
+  return new Promise((resolve) => {
+    for (let i = 1; i <= frameCount; i++) {
+      const img = new Image();
+      images.push(img);
+      img.onload = () => {
+        loadedCount++;
+        loaderText.textContent = `Loading ${Math.round((loadedCount / frameCount) * 100)}%`;
+        
+        if (loadedCount === frameCount) {
+          resolve();
+        }
+      };
+      img.onerror = () => {
+        loadedCount++;
+        if (loadedCount === frameCount) {
+          resolve();
+        }
+      };
+      img.src = getFramePath(i);
+    }
   });
-
-  return { firstReady, allLoaded };
 }
 
-// Preload Section 3 images in the background with limited concurrency
+// Preload Section 3 images asynchronously in the background and preserve order
 function preloadImages2() {
-  const paths = [];
-  for (let i = 0; i < frameCount2; i++) paths.push(getFramePath2(i + 1));
-  return loadImageBatch(paths, images2).then(() => {
-    sequence2Loaded = true;
+  return new Promise((resolve) => {
+    for (let i = 1; i <= frameCount2; i++) {
+      const img = new Image();
+      images2.push(img);
+      img.onload = () => {
+        loadedCount2++;
+        if (loadedCount2 === frameCount2) {
+          sequence2Loaded = true;
+          resolve();
+        }
+      };
+      img.onerror = () => {
+        loadedCount2++;
+        if (loadedCount2 === frameCount2) {
+          sequence2Loaded = true;
+          resolve();
+        }
+      };
+      img.src = getFramePath2(i);
+    }
   });
 }
 
 // Initialize components
 async function init() {
-  // 1. Start preloading Section 1 frames (batched, in the background)
-  const { firstReady, allLoaded } = preloadImages();
+  // 1. Load Section 1 first to make page immediately interactive
+  await preloadImages();
 
-  // 2. Show the page as soon as the FIRST frame is ready (~19 KB)
-  //    instead of waiting for all 210 frames (~4.6 MB) → fast LCP/FCP/SI
-  await firstReady;
-
-  // 3. Hide loading overlay
+  // 2. Hide loading overlay
   loader.classList.add('loader--hidden');
 
-  // 4. Trigger initial sizing and render first frame of Section 1
+  // 3. Trigger initial sizing and render first frame of Section 1
   resizeCanvas();
 
   // 4. Canvas 1 + Hero visible from the start
@@ -305,24 +291,7 @@ async function init() {
     onUpdate: render,
   });
 
-  // 5. Remaining Section 1 frames keep loading in the background;
-  //    re-render once everything is available (no visible change needed)
-  allLoaded.then(() => {
-    render();
-  });
-
-  // 6. Section 3 images are preloaded ONLY when the user scrolls toward them,
-  //    to avoid decoding 240 extra frames at startup
-  ScrollTrigger.create({
-    trigger: '#seq-wrapper-2',
-    start: 'top bottom',
-    once: true,
-    onEnter: setupSection3,
-  });
-}
-
-// Preload and set up Section 3 (canvas 2) when it's about to enter the viewport
-function setupSection3() {
+  // 5. Preload Section 3 images in the background
   preloadImages2().then(() => {
     // Redraw Canvas 2 with first frame of Section 3 once preloaded
     render2();
