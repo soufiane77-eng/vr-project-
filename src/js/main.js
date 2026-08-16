@@ -54,7 +54,8 @@ let sequence2Loaded = false;
 
 // Generate frame paths for Section 1 (frames3 - recompressed, local)
 const getFramePath = (index) => {
-  return `/frames3/frame_${index.toString().padStart(6, '0')}.webp`;
+  return `https://cdn.jsdelivr.net/gh/soufiane77-eng/vr-project-@master/public/frames3/frame_${index.toString().padStart(6, '0')}.webp`;
+
 };
 
 // Generate frame paths for Section 3 (CDN)
