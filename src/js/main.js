@@ -40,7 +40,7 @@ const loader = document.getElementById('loader');
 const loaderText = document.getElementById('loader-text');
 
 // Sequence 1 Configuration
-const frameCount = 210;
+const frameCount = 192;
 const images = [];
 let loadedCount = 0;
 const sequence = { frame: 0 };
@@ -52,9 +52,9 @@ let loadedCount2 = 0;
 const sequence2 = { frame: 0 };
 let sequence2Loaded = false;
 
-// Generate frame paths for Section 1 (CDN)
+// Generate frame paths for Section 1 (frames3 - recompressed, local)
 const getFramePath = (index) => {
-  return `https://cdn.jsdelivr.net/gh/soufiane77-eng/vr-project-@master/public/frames/frame_${index.toString().padStart(6, '0')}.webp`;
+  return `/frames3/frame_${index.toString().padStart(6, '0')}.webp`;
 };
 
 // Generate frame paths for Section 3 (CDN)
