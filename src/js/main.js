@@ -40,7 +40,7 @@ const loader = document.getElementById('loader');
 const loaderText = document.getElementById('loader-text');
 
 // Sequence 1 Configuration
-const frameCount = 240;
+const frameCount = 192;
 const images = [];
 let loadedCount = 0;
 const sequence = { frame: 0 };
